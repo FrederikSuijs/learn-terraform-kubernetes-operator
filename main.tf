@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "2.0.2"
+      source = "hashicorp/kubernetes"
+      #version = "2.0.2"
     }
   }
 }
@@ -23,11 +23,11 @@ variable "cluster_ca_certificate" {
   type = string
 }
 
-variable "aws_access_key_id" {
+variable "aci_username" {
   type = string
 }
 
-variable "aws_secret_access_key" {
+variable "aci_password" {
   type = string
 }
 
@@ -66,8 +66,8 @@ resource "kubernetes_secret" "workspacesecrets" {
   }
 
   data = {
-    "AWS_ACCESS_KEY_ID"     = var.aws_access_key_id
-    "AWS_SECRET_ACCESS_KEY" = var.aws_secret_access_key
+    "ACI_USERNAME" = var.aci_username
+    "ACI_PASSWORD" = var.aci_password
   }
 }
 
